@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot>
+
+  <!-- transmission xacro -->
+  <macro name="u7_trans" params="side joint reduction tc">
+     <transmission name="${side}${joint}_trans">
+       <type>transmission_interface/SimpleTransmission</type>
+       <joint name="${side}${joint}_joint">
+	 <hardwareInterface>EffortJointInterface</hardwareInterface>
+       </joint>
+       <actuator name="${side}${joint}_motor">
+         <hardwareInterface>EffortJointInterface</hardwareInterface>
+         <mechanicalReduction>${reduction}</mechanicalReduction>
+       </actuator>
+       <motorTorqueConstant>${tc}</motorTorqueConstant>
+     </transmission>
+  </macro>
+
+  <!-- r2_arm_transmission xacro -->
+  <macro name="u7_arm_trans" params="side">
+
+     <u7_trans side="${side}" joint="shoulder_pitch" reduction="318" tc="0.01"/>
+     <u7_trans side="${side}" joint="shoulder_roll" reduction="159" tc="0.01"/>
+     <u7_trans side="${side}" joint="shoulder_yaw" reduction="159" tc="0.01"/>
+     <u7_trans side="${side}" joint="elbow" reduction="159" tc="0.01"/>
+
+  </macro>
+
+
+  <u7_trans side="${robot_name}left_" joint="wheel" reduction="43" tc="0.01"/>
+  <u7_trans side="${robot_name}right_" joint="wheel" reduction="43" tc="0.01"/>
+  <u7_trans side="${robot_name}" joint="trunk" reduction="66" tc="0.01"/>
+
+  <u7_arm_trans side="${robot_name}left_"/>
+  <u7_arm_trans side="${robot_name}right_"/>
+
+  <u7_trans side="${robot_name}" joint="xtion_head_lower_tilt" reduction="1" tc="0.5"/>
+  <u7_trans side="${robot_name}" joint="xtion_head_pan" reduction="1.13636363" tc="0.01"/>
+  <u7_trans side="${robot_name}" joint="xtion_head_upper_tilt" reduction="1" tc="0.01"/>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
+      <robotNamespace>ubot7</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+</robot>

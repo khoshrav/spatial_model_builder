@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="r2">
+  <!--
+  ASUS Xtion PRO LIVE
+    Specs from:
+    http://www.asus.com/Multimedia/Xtion_PRO_LIVE/#specifications
+  -->
+
+  <xacro:property name="AsusWidth" value="0.018"/>
+  <xacro:property name="AsusHeight" value="0.035"/>
+  <xacro:property name="AsusDepth" value="0.05"/>
+
+  <xacro:property name="AsusMass" value="0.25"/>
+
+  <xacro:property name="AsusImageWidth" value="640"/>
+  <xacro:property name="AsusImageHeight" value="480"/>
+  <xacro:property name="AsusFieldOfView" value="1.01229097"/>
+  <xacro:property name="AsusMinDistance" value="0.2"/>
+  <xacro:property name="AsusMaxDistance" value="5"/>
+  <xacro:property name="AsusFrameRate" value="30"/>
+
+
+     
+
+  <xacro:macro name="asus_sensor" params="sensor_name parent_camera_link parent_depth_link">
+    
+       <link name="virtual_asus_frame">
+	<inertial>
+	  <mass value="0.000001" />
+	  <origin xyz="0 0 0" />
+	  <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0"
+	           izz="0.0001" />
+	</inertial>
+      </link>
+
+      <joint name="virtual_asus_joint" type="fixed">
+	<origin xyz="0 0 0" rpy="1.57079632679 -1.57079632679 0" />
+	<parent link="${parent_depth_link}" />
+	<child link="virtual_asus_frame" />
+      </joint>
+
+      <gazebo_link name="virtual_asus_frame"            gravityOff="false" static="false" collide="false" material="Gazebo/Orange"/>
+      <gazebo_joint name="virtual_asus_joint"/>
+
+
+
+
+<!-- <xacro:virtual_link name="${sensor_name}_Frame"
+                    origin_rpy="0 0 0"
+                    origin_xyz="0 0 0"/>
+ -->
+
+      <gazebo reference="virtual_asus_frame">
+        <sensor type="depth" name="openni_camera_camera">
+            <always_on>0</always_on>
+            <visualize>true</visualize>
+            <camera>
+                <horizontal_fov>1.047</horizontal_fov>
+                <image>
+                    <width>640</width>
+                    <height>480</height>
+                    <format>R8G8B8</format>
+                </image>
+                <depth_camera> </depth_camera>
+                <clip>
+                    <near>0.1</near>
+                    <far>100</far>
+                </clip>
+            </camera>
+            <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+                <alwaysOn>true</alwaysOn>
+                <updateRate>10.0</updateRate>
+                <cameraName>${sensor_name}</cameraName>
+                <frameName>kinect_optical_frame</frameName>
+                <imageTopicName>/${sensor_name}/rgb/image_rect_color</imageTopicName>
+                <depthImageTopicName>/${sensor_name}/depth/image_rect_raw</depthImageTopicName>
+<!--                <pointCloudTopicName>/${sensor_name}/depth/points</pointCloudTopicName>-->
+                <pointCloudTopicName>/${sensor_name}/depth_registered/points</pointCloudTopicName>
+                <cameraInfoTopicName>/${sensor_name}/rgb/camera_info</cameraInfoTopicName>
+                <depthImageCameraInfoTopicName>/${sensor_name}/depth/camera_info</depthImageCameraInfoTopicName>
+                <pointCloudCutoff>0.4</pointCloudCutoff>
+                <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
+                <hackBaseline>0.0</hackBaseline>
+                <distortionK1>0.0</distortionK1>
+                <distortionK2>0.0</distortionK2>
+                <distortionK3>0.0</distortionK3>
+                <distortionT1>0.0</distortionT1>
+                <distortionT2>0.0</distortionT2>
+                <CxPrime>0.0</CxPrime>
+                <Cx>0.0</Cx>
+                <Cy>0.0</Cy>
+                <focalLength>0.0</focalLength>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+
+  </xacro:macro>
+
+<!--  <xacro:asus_sensor sensor_name="${robot_name}asus" parent_camera_link="${robot_name}virtual_asus_frame" parent_depth_link="${robot_name}virtual_asus_frame"/>-->
+ <!--<xacro:asus_sensor sensor_name="${robot_name}asus" parent_camera_link="${robot_name}kinect_optical_frame" parent_depth_link="${robot_name}kinect_depth_frame"/>-->
+</robot>
+
+

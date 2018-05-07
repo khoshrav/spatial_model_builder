@@ -1,0 +1,10 @@
+# tells controller which arm to use for bracing
+# (valid options: left, right, object (uses both arms while grasping object))
+string arm_to_use
+
+float64 z_force_threshold
+
+bool preposture_first
+
+---
+bool success

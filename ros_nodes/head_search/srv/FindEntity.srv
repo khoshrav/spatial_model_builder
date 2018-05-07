@@ -1,0 +1,8 @@
+string EntityClass
+bool useProbability
+---
+float32 x
+float32 y
+float32 z
+float64 likelihood
+int32 actionsTaken

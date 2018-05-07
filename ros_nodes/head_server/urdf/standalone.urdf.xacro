@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+
+<robot name="uBot_head" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:include filename="$(find head_server)/urdf/ubot7_common.urdf.xacro" />
+  <xacro:include filename="$(find head_server)/urdf/3dofhead.urdf.xacro" />
+
+  <!-- <xacro:include filename="$(find head_server)/urdf/ubot7_common.gazebo.xacro" />
+  <xacro:include filename="$(find head_server)/urdf/ubot7_head.gazebo.xacro" /> -->
+
+
+
+<!-- <xacro:include filename="$(find ubot7)/urdf/sensors/asus.gazebo.xacro" />
+  <xacro:asus_sensor sensor_name="${robot_name}asus" parent_camera_link="${robot_name}kinect_optical_frame" parent_depth_link="${robot_name}kinect_depth_frame"/>-->
+
+  <!-- <xacro:include filename="$(find ubot7)/urdf/sensors/camera.gazebo.xacro" />-->
+  <!--<xacro:camera_sensor camera_name="${robot_name}head/camera/left" frame_name="${robot_name}left_camera_optical_frame" />-->
+
+
+
+ <!-- <xacro:include filename="$(find head_server)/urdf/gazebo_plugins/ubot7.transmissions.xacro" /> -->
+<!--  <xacro:include filename="$(find r2_gazebo)/urdf/gazebo_plugins/r2.gazebo.controller.xacro" />-->
+
+ <!-- <gazebo>
+    <plugin name="ubot_gazebo_interface" filename="libubot_gazebo_interface.so">
+      <balancer_enabled>true</balancer_enabled>
+    </plugin>
+  </gazebo> -->
+
+  <!-- Attach head to base_footprint -->
+  <link name="world">
+  	<origin xyz="0 0 0" />
+  </link>
+
+  	<joint name="xtion_head_base_joint" type="fixed">
+  		<parent link="world" />
+  		<child link="head_base_link" />
+  		<!-- <origin xyz="0 0 0.075" rpy="0 0 0" /> -->
+    		<origin xyz="0 0 0.1145" rpy="0 0 0" />
+  	</joint>
+
+</robot>

@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<launch>
+	<!-- Will act as a loopback device while in position mode
+		Use "loopback:=true" as parameter to override.
+	-->
+	<arg name="loopback" default="false"/>
+
+	<arg name="simulation" default="false"/>
+
+	<arg name="head_hardware" default="1"/>
+
+
+	<!-- Load controller configuration to parameter server -->
+	<rosparam file="$(find head_server)/config/dynamixel_joint_controllers$(arg head_hardware).yaml" command="load"/>
+	<!-- Setup the system specific ethernet port for the ubot -->
+	<!-- Use the p2-grant prefix to move the executable and grant permissions to open raw ethernet port -->
+	<node name="head_server" pkg="head_server" type="head_server" output="screen"> <!--launch-prefix="pr2-grant" -->
+		<param name="loopback" value="$(arg loopback)" />
+		<param name="gazebo_simulation" value="$(arg simulation)" />
+
+	</node>
+
+	<!-- State publishers that make the robot model move in rviz -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+	    <param name="publish_frequency" value="200.0"/>
+			<remap from="/joint_states" to="/uBot_head/joint_states"/>
+	</node>
+
+	<!-- Path to urdf file for rviz robot model -->
+
+
+		<param name="robot_description" command="$(find xacro)/xacro.py '$(find head_server)/urdf/standalone.urdf.xacro'" />
+
+
+</launch>

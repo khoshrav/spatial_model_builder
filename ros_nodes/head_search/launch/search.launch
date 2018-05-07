@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+
+	<arg name="darknet_config" default=""/>
+
+ <arg name="darknet_weights" default=""/>
+
+ <arg name="darknet_labels" default=""/>
+
+ <arg name="log_path" default="/home/khoshrav/data/head_search/"/>
+
+ <arg name="loadModels" default="false"/>
+
+
+	<remap from="/camera/image_raw" to="/asus/rgb/image_rect_color" /> <!--raw" />-->
+	<remap from="/camera/camera_info" to="/asus/rgb/camera_info" />
+
+	<!-- <node pkg="darknet_ros" type="yolo_ros" name="yolo_ros" ns="yolo_ros">
+		<remap from="/camera/image_raw" to="/asus/rgb/image_rect_color" />
+		<remap from="/camera/camera_info" to="/asus/rgb/camera_info" />
+		<remap from="/camera/points" to="/asus/depth_registered/points" />
+		<param name="darknet_config" value="$(arg darknet_config)" />
+		<param name="darknet_weights" value="$(arg darknet_weights)" />
+		<param name="darknet_labels" value="$(arg darknet_labels)" />
+	</node> -->
+
+
+  <node name="head_search" pkg="head_search" type="head_search" output="screen">
+		<param name="log_path" value="$(arg log_path)" />
+		<param name="loadModels" value="$(arg loadModels)" />
+	</node>
+
+</launch>

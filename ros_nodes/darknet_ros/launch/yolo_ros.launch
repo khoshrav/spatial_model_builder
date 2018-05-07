@@ -1,0 +1,20 @@
+<launch>
+   <!-- <include file="$(find darknet_ros)/launch/usb_cam.launch"/> -->
+   <arg name="darknet_config" default=""/>
+
+ 	<arg name="darknet_weights" default=""/>
+
+ 	<arg name="darknet_labels" default=""/>
+
+   <remap from="/camera/image_raw" to="/asus/rgb/image_rect_color" /> <!--raw" />-->
+   <remap from="/camera/camera_info" to="/asus/rgb/camera_info" />
+   <!-- <remap from="/camera/points" to="/asus/depth_registered/points" /> -->
+   <remap from="/camera/points" to="/asus/depth/points" />
+
+   <node pkg="darknet_ros" type="yolo_ros" name="yolo_ros" ns="yolo_ros">
+ 		<param name="darknet_config" value="$(arg darknet_config)" />
+ 		<param name="darknet_weights" value="$(arg darknet_weights)" />
+ 		<param name="darknet_labels" value="$(arg darknet_labels)" />
+ 	</node>
+
+</launch>

@@ -1,6 +1,6 @@
 ## Keras Training for YOLO ##
 
-This project contains code that performs YOLO training on Keras, using the v2 model as the architecture. The final weights are then used to perform forward pass to build a spatial model of an environment. Since training the model from scratch is unfeasible, we try to retrain the last layer to simulate training of an end to end object recognition model. To learn more on how YOLO works and how to use it, visit the awesome [website](https://pjreddie.com).
+This project contains code that performs YOLO training on Keras, using the v2 model as the architecture. The final weights are then used to perform forward pass to build a spatial model of an environment. Since training the model from scratch is unfeasible, we try to retrain the last layer to simulate training of an end to end object recognition model. To learn more on how YOLO works and how to use it, visit this awesome [website](https://pjreddie.com).
 
 The Keras model also has the following callbacks while training:
 
@@ -28,7 +28,7 @@ The Keras model also has the following callbacks while training:
 
 #### Final weights ####
 
-Our final weights after training the model has been uploaded as a h5 file to Google Drive. This can be used to run further training or even to perform forward passes for prediction. This file can be found [here](drive.google.com)
+Our final weights after training the model has been uploaded as a h5 file to Google Drive. This can be used to run further training or even to perform forward passes for prediction. This file can be found [here](https://drive.google.com/open?id=1SPMbAM7fKu8ZjID55pVUiNv3kk-iT0S7)
 
 #### Credits ####
 

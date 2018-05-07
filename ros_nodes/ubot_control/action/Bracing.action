@@ -1,0 +1,25 @@
+# tells controller which arm to use for bracing
+# (valid options: left, right, object (uses both arms while grasping object))
+string arm_to_use
+
+float64 z_force_threshold
+
+bool preposture_first
+
+
+---
+# define the result message
+uint32 controller_state
+
+---
+# define a feedback message
+float32 squared_error_residual
+
+geometry_msgs/Pose left_pos
+geometry_msgs/Pose right_pos
+geometry_msgs/Wrench left_goal_wrench
+geometry_msgs/Wrench right_goal_wrench
+
+
+
+

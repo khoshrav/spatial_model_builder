@@ -1,0 +1,13 @@
+# service for gaze control
+bool use_base
+bool position_target
+bool heading_angle_target
+bool head_tilt_angle_target
+float32 position_x
+float32 position_y
+float32 position_z
+float32 heading_angle
+float32 head_tilt_angle
+
+---
+bool success

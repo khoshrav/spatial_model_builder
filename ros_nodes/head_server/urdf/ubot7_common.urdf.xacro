@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<robot name="uBot_head">
+	<!-- uBot-6 URDF definition. Note: joint efforts, velocities, and limits
+		must be verified on the real robot. -->
+
+
+<!--  <property name="base_joint_damping" value= "0.0" />
+  <property name="base_joint_friction" value= "10.0" />
+  <property name="wheel_damping" value= "1.0" />
+  <property name="wheel_friction" value= "0.0" />
+  <property name="trunk_joint_damping" value= "10.0" />
+  <property name="trunk_joint_friction" value= "0.0" />
+  <property name="left_arm_j4_damping" value= "1.0" />
+  <property name="shoulder_pitch_damping" value= "10.0" />
+  <property name="shoulder_pitch_friction" value= "0.0" />
+  <property name="shoulder_roll_damping" value= "10.0" />
+  <property name="shoulder_roll_friction" value= "0.0" />
+  <property name="shoulder_yaw_damping" value= "10.0" />
+  <property name="shoulder_yaw_friction" value= "0.0" />
+  <property name="elbow_wheel_damping" value= "0.0" />
+  <property name="elbow_wheel_friction" value= "0.0" />
+  <property name="elbow_damping" value= "10.0" />
+  <property name="elbow_friction" value= "0.0" />
+  <property name="head_tilt_damping" value= "0.2" />
+  <property name="head_tilt_friction" value= "0.2" />-->
+<!--
+    <property name="base_joint_damping" value= "0.0" />
+  <property name="base_joint_friction" value= "0.0" />
+  <property name="wheel_damping" value= "0.0" />
+  <property name="wheel_friction" value= "0.0" />
+  <property name="trunk_joint_damping" value= "0.0" />
+  <property name="trunk_joint_friction" value= "0.0" />
+  <property name="shoulder_pitch_damping" value= "0.0" />
+  <property name="shoulder_pitch_friction" value= "0.0" />
+  <property name="shoulder_roll_damping" value= "0.0" />
+  <property name="shoulder_roll_friction" value= "0.0" />
+  <property name="shoulder_yaw_damping" value= "0.0" />
+  <property name="shoulder_yaw_friction" value= "0.0" />
+  <property name="elbow_wheel_damping" value= "0.0" />
+  <property name="elbow_wheel_friction" value= "0.0" />
+  <property name="elbow_damping" value= "0.0" />
+  <property name="elbow_friction" value= "0.0" /> -->
+  <property name="head_lower_tilt_damping" value= "0.0" />
+  <property name="head_lower_tilt_friction" value= "0.0" />
+  <property name="head_pan_damping" value= "0.0" />
+  <property name="head_pan_friction" value= "0.0" />
+  <property name="head_upper_tilt_damping" value= "0.0" />
+  <property name="head_upper_tilt_friction" value= "0.0" />
+
+	<material name="Silver">
+		<color rgba="0.75 0.75 0.75 1.0" />
+	</material>
+	<material name="Light Grey">
+		<color rgba="0.6 0.6 0.6 1.0" />
+	</material>
+	<material name="Grey">
+		<color rgba="0.5 0.5 0.5 1.0" />
+	</material>
+	<material name="Dark Grey">
+		<color rgba="0.3 0.3 0.3 1.0" />
+	</material>
+	<material name="Black">
+		<color rgba="0.1 0.1 0.1 1.0" />
+	</material>
+	<material name="Dark Blue">
+		<color rgba="0.2 0.2 0.55 1.0" />
+	</material>
+	<material name="Royal Blue">
+		<color rgba="0.255 0.412 0.882 1.0" />
+	</material>
+	<material name="Green">
+		<color rgba="0.2 0.6 0.2 1.0" />
+	</material>
+	<material name="Orange">
+		<color rgba="1.0 0.6 0.0 1.0" />
+	</material>
+	<material name="Red">
+		<color rgba="0.6 0.1 0.1 1.0" />
+	</material>
+	<material name="Dark Red">
+		<color rgba="0.4 0.1 0.1 1.0" />
+	</material>
+	<material name="Light Steel Blue">
+		<color rgba="0.45 0.5 0.6 1.0" />
+	</material>
+	<material name="Khaki">
+		<color rgba="0.5 0.45 0.3 1.0" />
+	</material>
+	<material name="Yellow">
+		<color rgba="0.6 0.6 0.0 1.0" />
+	</material>
+	<material name="Olive">
+		<color rgba="0.3 0.3 0.0 1.0" />
+	</material>
+
+
+
+
+</robot>

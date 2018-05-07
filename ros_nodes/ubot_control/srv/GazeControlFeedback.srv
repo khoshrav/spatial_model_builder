@@ -1,0 +1,5 @@
+# service for gaze control
+
+---
+bool done
+time goal_stamp

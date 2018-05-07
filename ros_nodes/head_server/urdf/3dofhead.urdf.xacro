@@ -1,0 +1,179 @@
+<?xml version="1.0" ?>
+<robot>
+	<!-- name="uBot_head"> -->
+	<!-- uBot-7 URDF definition. Note: joint efforts, velocities, and limits
+		must be verified on the real robot. -->
+
+
+
+
+	<link name="head_base_link">
+		<visual>
+      <!-- Warning. The frame location was moved up, but the visual and collision models are still in the old frame -->
+			<!-- <origin xyz="0.0 0.0 0.0" rpy="1.57079632679 0 1.57079632679" /> -->
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://ubot7/meshes/small/head_base.stl" />
+			</geometry>
+			<material name="Light Grey" />
+		</visual>
+		<collision>
+			<!-- <origin xyz="0.0 0.0 0.0" rpy="1.57079632679 0 1.57079632679" /> -->
+      <origin xyz="0.0 0.0 -0.0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://ubot7/meshes/small/head_base.stl" />
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz="-0.000121 -0.007607 -0.028153" rpy="0 0 0" />
+			<!-- <mass value="0.34007435" /> -->
+			<mass value="0.236113" />
+			<inertia ixx="0.001286" ixy="-0.000003" ixz="-0.000001"
+				iyy="0.000183" iyz="-0.000037" izz="0.001311" />
+		</inertial>
+	</link>
+
+	<link name="head_middle_bottom_link">
+		<visual>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://ubot7/meshes/small/head_middle_bottom.stl" />
+			</geometry>
+			<material name="Silver" />
+		</visual>
+		<collision>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://ubot7/meshes/small/head_middle_bottom.stl" />
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz="0.00000000 -0.04560457 -0.00244821" rpy="0 0 0" />
+            <!--<mass value="0.07364948" />-->
+			<mass value="0.209208" />
+			<inertia ixx="0.000341" ixy="0.000000" ixz="0.000000"
+				iyy="0.000350" iyz="0.000031" izz="0.000052" />
+		</inertial>
+	</link>
+
+	<link name="head_middle_top_link">
+		<visual>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://ubot7/meshes/small/head_middle_top.stl" />
+			</geometry>
+			<material name="Silver" />
+		</visual>
+		<collision>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://ubot7/meshes/small/head_middle_top.stl" />
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz="0.00000000 0.000064 0.045120" rpy="0 0 0" />
+          		<mass value="0.155831" />
+			<inertia ixx="0.000210" ixy="0.000000" ixz="0.000000"
+				iyy="0.000205" iyz="0.000000" izz="0.000035" />
+		</inertial>
+	</link>
+
+	<link name="head_top_link">
+		<visual>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://ubot7/meshes/small/head_top.stl" />
+			</geometry>
+			<material name="Light Steel Blue" />
+		</visual>
+		<collision>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://ubot7/meshes/small/head_top.stl" />
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz="-0.001004 -0.055883 0.001023" rpy="0 0 0" />
+			<mass value="0.193237" />
+			<inertia ixx="0.000484" ixy="0.000001" ixz="0.000000"
+				iyy="0.000444" iyz="0.000002" izz="0.000078" />
+		</inertial>
+	</link>
+
+	<link name="kinect_depth_frame">
+		<inertial>
+			<mass value="0.000001" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0"
+				izz="0.0001" />
+		</inertial>
+	</link>
+
+	<link name="kinect_optical_frame">
+		<inertial>
+			<mass value="0.000001" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0"
+				izz="0.0001" />
+		</inertial>
+	</link>
+
+	<link name="kinect_openni_frame">
+		<inertial>
+			<mass value="0.000001" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0"
+				izz="0.0001" />
+		</inertial>
+	</link>
+
+
+
+	<joint name="xtion_head_lower_tilt_joint" type="revolute">
+		<parent link="head_base_link" />
+		<child link="head_middle_bottom_link" />
+		<origin xyz="0 0.0 0" rpy="1.57079632679 0 0" />
+		<axis xyz="0 0 -1" />
+		<dynamics damping="${head_lower_tilt_damping}" friction="${head_lower_tilt_friction}"/>
+		<limit effort="1000.0" lower="-1.57" upper="1.57" velocity="5.5" />
+	</joint>
+
+	<joint name="xtion_head_pan_joint" type="revolute">
+		<parent link="head_middle_bottom_link" />
+		<child link="head_middle_top_link" />
+    		<origin xyz="0 0.0085 0" rpy="-1.57079632679 0 0" />
+		<axis xyz="0 0 1" />
+		<dynamics damping="${head_pan_damping}" friction="${head_pan_friction}"/>
+		<limit effort="1000.0" lower="-2.9" upper="2.9" velocity="5.5" />
+	</joint>
+
+	<joint name="xtion_head_upper_tilt_joint" type="revolute">
+		<parent link="head_middle_top_link" />
+		<child link="head_top_link" />
+		<origin xyz="0 0 0.0865" rpy="-1.57079632679 0 0" />
+		<axis xyz="0 0 1" />
+		<dynamics damping="${head_upper_tilt_damping}" friction="${head_upper_tilt_friction}"/>
+		<limit effort="1000.0" lower="-1.3" upper="1.3" velocity="5.5" />
+	</joint>
+
+	<joint name="kinect_depth_joint" type="fixed">
+		<origin xyz="0.01 -0.0625 0.048" rpy="0 1.57079632679 0" />
+		<parent link="head_top_link" />
+		<child link="kinect_depth_frame" />
+	</joint>
+
+	<joint name="kinect_rgb_joint" type="fixed">
+		<origin xyz="0.01 -0.0625 0.0216" rpy="0 1.57079632679 0" />
+		<parent link="head_top_link" />
+		<child link="kinect_optical_frame" />
+	</joint>
+
+	<joint name="kinect_openni_joint" type="fixed">
+		<origin xyz="0.01 -0.0625 0.048" rpy="0 1.57079632679 0" />
+		<parent link="head_top_link" />
+		<child link="kinect_openni_frame" />
+	</joint>
+
+
+
+</robot>

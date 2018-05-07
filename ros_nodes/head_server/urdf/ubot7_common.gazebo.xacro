@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+ 
+<robot>
+  <macro name="gazebo_link" params="name gravityOff static collide material">
+     <gazebo reference="${name}">
+        <selfCollide>${collide}</selfCollide>
+        <static>${static}</static>
+        <turnGravityOff>${gravityOff}</turnGravityOff>
+	<material>${material}</material>
+     </gazebo>
+  </macro>
+
+  <macro name="gazebo_joint" params="name">
+     <gazebo reference="${name}">
+        <stopKd value="0.0" />
+        <stopKp value="1000.0" />
+     </gazebo>
+  </macro>
+</robot>

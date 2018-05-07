@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ubot_control</name>
+  <version>0.0.0</version>
+  <description>The ubot_control package</description>
+
+  <maintainer email="lanighan@cs.umass.edu">Mike Lanighan</maintainer>
+
+  <license>BSD</license>
+
+  <!-- <url type="website">http://wiki.ros.org/ubot_control</url> -->
+
+  <author email="lanighan@cs.umass.edu">Mike Lanighan</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <depend>message_generation</depend> 
+  <depend>actionlib</depend>
+  <depend>geometry_msgs</depend>
+  <depend>kdl_parser</depend>
+  <depend>umass_math</depend>
+  <depend>perception_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>tf</depend>
+  <depend>ubot_msgs</depend>
+  <depend>control_msgs</depend>
+  <depend>umass_control</depend>
+  <depend>umass_control_msgs</depend>
+  <depend>ubot_spline_controller</depend>
+  <depend>std_srvs</depend>
+
+  <export>
+
+  </export>
+</package>
